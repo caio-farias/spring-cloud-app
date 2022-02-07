@@ -1,0 +1,49 @@
+@port=5000
+@hostname=http://localhost:{{port}}
+@service-alpha=/users-alpha/
+@accessToken=Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYWlvIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS92MS9sb2dpbiIsImV4cCI6MTY0MTkxNzMyMH0.yLrMyatJm7Z8QkvRESHWmQ-cK8vbFqajR_aywtpLdH0
+
+### Ping
+GET {{hostname}}{{service-alpha}} HTTP/1.1
+content-type: application/json
+
+### Routes
+GET {{hostname}}/actuator/gateway/routes HTTP/1.1
+content-type: application/json
+###
+
+## Users
+
+POST {{hostname}}{{service-alpha}}/users HTTP/1.1
+content-type: application/json
+
+{
+  "firstName": "Bira",
+  "lastName": "Silva",
+  "email": "bira2022@email.com",
+  "birthDate": "01/01/2022",
+  "username": "bira2022",
+  "password": "user-pass"
+}
+
+###
+GET {{hostname}}{{service-alpha}}/users/1 HTTP/1.1
+content-type: application/json
+# Authorization: {{accessToken}}
+
+###
+
+GET {{hostname}}{{service-alpha}}/users/ HTTP/1.1
+content-type: application/json
+Authorization: {{accessToken}}
+
+###
+DELETE {{hostname}}{{service-alpha}}/users/1 HTTP/1.1
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+###
+PATCH {{hostname}}{{service-alpha}}/users/1?firstName=Caio&lastName=Farias&email=caio@email.com&birthDate=22/06/1995&username=caio HTTP/1.1
+Authorization: {{accessToken}}
+Content-Type: application/json
+

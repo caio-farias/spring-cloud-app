@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active:
+    - dev
+  application:
+    name: spring-cloud-app-tasks
+  cloud:
+    config:
+      uri:
+      - http://localhost:8888/config  
+      
