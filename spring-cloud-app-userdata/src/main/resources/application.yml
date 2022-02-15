@@ -1,0 +1,23 @@
+spring.cloud.function.scan.packages: com.av3.springcloudappuserdata
+server.port: 8777
+spring.application.name: sprinc-cloud-app-userdata
+
+server:
+  error.include-message: always
+  servlet:
+    context-path: /api/v1
+
+eureka:
+  hostname: localhost
+  port: 8671
+
+spring:
+  cloud.loadbalancer.ribbon.enabled: false
+
+  eureka:
+    instance.preferIpAddress: true
+    client:
+      registerWithEureka: true
+      fetchRegistry: true
+      serviceUrl:
+        defaultZone: http://${eureka.hostname}:${eureka.port}/eureka/

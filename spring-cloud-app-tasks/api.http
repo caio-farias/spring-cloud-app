@@ -1,0 +1,74 @@
+@port=5091
+@hostname=http://localhost:{{port}}/api/v1
+@userId=1
+@taskId=1
+@tasksList-service=/lists/1
+@tasks-service=/tasks/
+
+### Ping
+GET {{hostname}} HTTP/1.1
+content-type: application/json
+
+
+### Movies
+POST {{hostname}}{{tasks-service}} HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Tarefa32",
+  "description": "descricao",
+  "deadline": "22/06/2022",
+  "priority": 1
+}
+
+###
+GET {{hostname}}{{tasks-service}}{{taskId}} HTTP/1.1
+content-type: application/json
+
+###
+PATCH  {{hostname}}{{tasks-service}}{{taskId}} HTTP/1.1
+content-type: application/json
+
+###
+DELETE {{hostname}}/users/1 HTTP/1.1
+Content-Type: application/json
+
+### UserMovieLists
+POST {{hostname}}{{tasksList-service}} HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Lista de Tarefas"
+}
+
+###
+GET {{hostname}}{{tasksList-service}} HTTP/1.1
+content-type: application/json
+
+###
+PATCH  {{hostname}}{{tasksList-service}} HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Lista de Tarefa2"
+}
+
+###
+PUT  {{hostname}}{{tasksList-service}}/add HTTP/1.1
+content-type: application/json
+
+{
+  "tasksId": [1]
+}
+
+###
+PUT  {{hostname}}{{tasksList-service}}/remove HTTP/1.1
+content-type: application/json
+
+{
+  "tasksId": [1]
+}
+
+###
+DELETE {{hostname}}{{tasksList-service}} HTTP/1.1
+Content-Type: application/json

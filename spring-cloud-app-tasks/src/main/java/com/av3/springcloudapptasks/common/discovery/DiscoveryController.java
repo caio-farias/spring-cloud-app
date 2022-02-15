@@ -1,6 +1,8 @@
 package com.av3.springcloudapptasks.common.discovery;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,15 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("")
 public class DiscoveryController {
 
-  @Value("${server.port}")
-  private int serverPort;
+  @Autowired
+  Environment enviroment;
 
   @Value("${spring.application.name}")
   private String appName;
 
   @GetMapping
   public ResponseEntity<String> ping() {
-    return ResponseEntity.ok("OK from"
-        + String.format("%s:%i", appName, serverPort));
+    final String serverPort = enviroment.getProperty("local.server.port");
+    return ResponseEntity.ok("OK from "
+        + String.format("%s:" + serverPort, appName));
   }
 }

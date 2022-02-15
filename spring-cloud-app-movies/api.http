@@ -1,0 +1,71 @@
+@port=5071
+@hostname=http://localhost:{{port}}/api/v1
+@userId=1
+@movieId=1
+@moviesList-service=/lists/1
+@movies-service=/movies/
+
+### Ping
+GET {{hostname}}{{movies-service}} HTTP/1.1
+content-type: application/json
+
+
+### Movies
+POST {{hostname}}{{movies-service}} HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Filme32"
+}
+
+###
+GET {{hostname}}{{movies-service}}{{movieId}} HTTP/1.1
+content-type: application/json
+
+###
+PATCH  {{hostname}}{{movies-service}}{{movieId}} HTTP/1.1
+content-type: application/json
+
+###
+DELETE {{hostname}}/users/1 HTTP/1.1
+Content-Type: application/json
+
+### UserMovieLists
+POST {{hostname}}{{moviesList-service}} HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Lista de filmes Filme"
+}
+
+###
+GET {{hostname}}{{moviesList-service}} HTTP/1.1
+content-type: application/json
+
+###
+PATCH  {{hostname}}{{moviesList-service}} HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Lista de filmes Filme2"
+}
+
+###
+PUT  {{hostname}}{{moviesList-service}}/add HTTP/1.1
+content-type: application/json
+
+{
+  "moviesId": [1]
+}
+
+###
+PUT  {{hostname}}{{moviesList-service}}/remove HTTP/1.1
+content-type: application/json
+
+{
+  "moviesId": [1]
+}
+
+###
+DELETE {{hostname}}{{moviesList-service}} HTTP/1.1
+Content-Type: application/json
