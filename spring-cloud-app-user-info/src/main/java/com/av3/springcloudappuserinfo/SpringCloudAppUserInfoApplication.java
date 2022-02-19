@@ -16,7 +16,7 @@ import brave.sampler.Sampler;
 public class SpringCloudAppUserInfoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringCloudAppUserInfoApplication.class, args);
+		SpringApplication.run(SpringCloudAppUserInfoApplication.class, "--server.port=8052");
 	}
 
 	@Bean
