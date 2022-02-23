@@ -63,8 +63,8 @@ public interface UsersServiceInterface {
   #### Desenvolvimento das threads no teste (apenas com 5 threads pois existem 13 instâncias  + JMeter + Zipkin; PC está cansadíssimo)
   ![test](https://user-images.githubusercontent.com/52352222/155240132-f70bcf77-e24b-4a67-b8d8-60ce4b3119b9.png)
   
-  ##### Resultado do teste do JMeter 
+  ##### Teste da aplicação utilizando JMeter 
   ![Screenshot from 2022-02-22 20-15-33](https://user-images.githubusercontent.com/52352222/155240011-613b5fce-e41e-46c0-936b-edabf28df493.png)
   
-  ### Tracing do Zipkin
+  ### Tracing da aplicação utilizando Zipkin
   ![Screenshot from 2022-02-22 20-57-04](https://user-images.githubusercontent.com/52352222/155240023-90a1ad56-0513-4595-97be-2824db44c17a.png)
